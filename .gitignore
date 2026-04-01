@@ -1,0 +1,26 @@
+# ビルド成果物
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ログ・ユーザーデータ（ローカル固有）
+logs.csv
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 生成ファイル（build.bat で自動生成されるため不要）
+app.ico
