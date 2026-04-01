@@ -50,8 +50,104 @@ namespace PeriodicAccessTool
             var menu = new ContextMenuStrip();
             menu.Items.Add("メイン画面を開く", null, (_, _) => ShowMainForm());
             menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add("このアプリについて", null, (_, _) => ShowAbout());
+            menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add("終了", null, (_, _) => ExitApp());
             return menu;
+        }
+
+        private void ShowAbout()
+        {
+            var form = new Form
+            {
+                Text = "定期アクセス支援ツール について",
+                Size = new Size(400, 260),
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false,
+                MinimizeBox = false,
+                StartPosition = FormStartPosition.CenterScreen,
+            };
+
+            var panel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown,
+                Padding = new Padding(24),
+                AutoSize = false,
+            };
+
+            // ロゴ（SVGは直接描画できないためテキストで代替）
+            var lblLogo = new Label
+            {
+                Text = "SOFTEX-CELWARE",
+                Font = new Font("Arial Black", 18, FontStyle.Bold),
+                ForeColor = Color.FromArgb(45, 106, 63),
+                AutoSize = true,
+                Margin = new Padding(0, 0, 0, 8),
+            };
+
+            var lblApp = new Label
+            {
+                Text = "定期アクセス支援ツール  v1.0",
+                Font = new Font("メイリオ", 10, FontStyle.Bold),
+                AutoSize = true,
+                Margin = new Padding(0, 0, 0, 4),
+            };
+
+            var lblDesc = new Label
+            {
+                Text = "クラウドソーシングサイトへの定期アクセスを自動化するWindows常駐アプリです。",
+                AutoSize = false,
+                Size = new Size(340, 40),
+                Font = new Font("メイリオ", 9),
+                ForeColor = Color.DimGray,
+                Margin = new Padding(0, 0, 0, 12),
+            };
+
+            var lnkBlog = new LinkLabel
+            {
+                Text = "📖 紹介記事・詳細はこちら（SOFTEX-CELWARE）",
+                AutoSize = true,
+                Font = new Font("メイリオ", 9),
+                Margin = new Padding(0, 0, 0, 8),
+            };
+            lnkBlog.LinkClicked += (_, _) =>
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "https://www.softex-celware.com/post/crowdsourcing-auto-login-tool",
+                    UseShellExecute = true,
+                });
+
+            var lnkGithub = new LinkLabel
+            {
+                Text = "⭐ GitHub リポジトリ",
+                AutoSize = true,
+                Font = new Font("メイリオ", 9),
+                Margin = new Padding(0, 0, 0, 12),
+            };
+            lnkGithub.LinkClicked += (_, _) =>
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "https://github.com/YujiFukami/periodic-access-tool",
+                    UseShellExecute = true,
+                });
+
+            var btnClose = new Button
+            {
+                Text = "閉じる",
+                Width = 90,
+                DialogResult = DialogResult.OK,
+            };
+            btnClose.Click += (_, _) => form.Close();
+
+            panel.Controls.Add(lblLogo);
+            panel.Controls.Add(lblApp);
+            panel.Controls.Add(lblDesc);
+            panel.Controls.Add(lnkBlog);
+            panel.Controls.Add(lnkGithub);
+            panel.Controls.Add(btnClose);
+            form.Controls.Add(panel);
+            form.ShowDialog();
         }
 
         private void ShowMainForm()

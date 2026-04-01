@@ -1,6 +1,14 @@
+<p align="center">
+  <img src="Assets/logo.svg" alt="SOFTEX-CELWARE" width="320">
+</p>
+
+---
+
 # 定期アクセス支援ツール
 
 クラウドソーシングサイト（Lancers・CrowdWorks など）へ、指定したURLに一定間隔で自動アクセスするWindows常駐デスクトップアプリです。
+
+> 📖 **紹介記事**: [クラウドソーシングで「活動中」を自動で維持する方法](https://www.softex-celware.com/post/crowdsourcing-auto-login-tool)
 
 ## 主な機能
 
@@ -98,3 +106,9 @@ bin\Release\net8.0-windows\定期アクセス支援ツール.exe をダブルク
 ## ライセンス
 
 MIT License
+
+---
+
+<p align="center">
+  Developed by <a href="https://www.softex-celware.com">SOFTEX-CELWARE</a>
+</p>
